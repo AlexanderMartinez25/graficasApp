@@ -34,14 +34,20 @@ export class DonaHttpComponent implements OnInit {
   constructor(private gs: GraficasService) { }
 
   ngOnInit(): void {
-    this.gs.getUsuariosRRSS()
-      .subscribe(data => {
-        const labels = Object.keys(data);
-        const values = Object.values(data);
 
-        this.doughnutChartLabels = labels;
-        this.doughnutChartData.push(values)
+    // this.gs.getUsuariosRRSS()
+    //   .subscribe(data => {
+    //     const labels = Object.keys(data);
+    //     const values = Object.values(data);
+    //     this.doughnutChartLabels = labels;
+    //     this.doughnutChartData.push(values)
+    //   })
 
+    this.gs.getUsuariosRRSSDonaData()
+      .subscribe(({ labels, values }) => {
+
+        this.doughnutChartLabels = labels
+        this.doughnutChartData.push(values);
       })
   }
 
